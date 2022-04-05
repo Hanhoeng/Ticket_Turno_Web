@@ -132,6 +132,19 @@
             return $cuantos;
         }
 
+        public function existe_ticket_id_curp($id,$curp){
+            $id=$this->db_conn->real_escape_string($id);
+            $sql = "SELECT COUNT(*) FROM ticket_turno";
+            $sql.= " WHERE ID_TICKET='$id' AND CURP='$curp'";
+            $this->set_sql($sql);
+            $rs = mysqli_query($this->db_conn,$this->db_query) or die(mysqli_error($this->db_conn));
+
+            $renglon = mysqli_fetch_array($rs);
+            $cuantos=$renglon[0];
+
+            return $cuantos;
+        }
+
         public function borra_ticket($id){
             $id=$this->db_conn->real_escape_string($id);
             $sql="DELETE FROM ticket_turno WHERE ID_TICKET='$id'";

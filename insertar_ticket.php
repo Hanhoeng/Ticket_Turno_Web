@@ -55,7 +55,8 @@
     if(!$errores){
         include("class/class_ticket_turno.php");
         include("class/class_dal.php");
-        $obj_ticket = new ticket_turno($tram,$curp,$nomb,$pate,$mate,$tele,$celu,$corr,$edad,$muni,$asun);
+        print $tram;
+        $obj_ticket = new ticket_turno(NULL,$tram,$curp,$nomb,$pate,$mate,$tele,$celu,$corr,$edad,$muni,$asun);
         $metodos_ticket = new ticket_turno_dal;
 
         if($metodos_ticket->agregar($obj_ticket)==1){
