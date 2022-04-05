@@ -13,3 +13,9 @@
 <script type="text/javascript" src="Buttons-1.6.1/js/buttons.html5.min.js"></script>
 <script type="text/javascript" src="Buttons-1.6.1/js/buttons.print.min.js"></script>
 <script type="text/javascript" src="Responsive-2.2.3/js/dataTables.responsive.min.js"></script>
+<!-- jQuery library -->
+<script src="js/jquery.min.js"></script>
+
+<!-- jsPDF library -->
+<script src="js/jsPDF/dist/jspdf.min.js"></script>
+<script src="js/html_pdf.js"></script>
