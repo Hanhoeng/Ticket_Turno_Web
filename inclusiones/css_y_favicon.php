@@ -1,2 +1,6 @@
+<link rel="icon" type="image/png" href="img/MicrosoftTeams-image.png">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="css/sweetalert2.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="DataTables-1.10.20/css/jquery.dataTables.min.css"/>
+<link rel="stylesheet" type="text/css" href="Buttons-1.6.1/css/buttons.dataTables.min.css"/>
+<link rel="stylesheet" type="text/css" href="Responsive-2.2.3/css/responsive.dataTables.min.css"/>
