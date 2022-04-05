@@ -27,6 +27,21 @@
             return $obj_det;
         }
 
+        function ticket_por_id_y_curp($id,$curp){
+            $id=$this->db_conn->real_escape_string($id);
+            $curp=$this->db_conn->real_escape_string($curp);
+            $sql="SELECT * FROM ticket_turno WHERE ID_TICKET='$id' AND CURP='$curp';";
+            $this->set_sql($sql);
+            $result=mysqli_query($this->db_conn,$this->db_query) or die(mysqli_error($this->db_conn));
+            $total_TICKETS=mysqli_num_rows($result);
+            $obj_det=null;
+            if($total_TICKETS==1){
+                $renglon=mysqli_fetch_assoc($result);
+                $obj_det= new ticket_turno($renglon["ID_TICKET"],utf8_encode($renglon["TRAMITANTE"]),utf8_encode($renglon["CURP"]),utf8_encode($renglon["NOMBRE"]),utf8_encode($renglon["PATERNO"]),utf8_encode($renglon["MATERNO"]),$renglon["TELEFONO"],$renglon["CELULAR"],utf8_encode($renglon["CORREO"]),$renglon["EDAD"],utf8_encode($renglon["ID_MUNICIPIO"]),utf8_encode($renglon["ID_ASUNTO"]));
+            }//end if
+            return $obj_det;
+        }
+
         function obtener_lista_ticket(){
             $sql="SELECT * FROM ticket_turno";
             $this->set_sql($sql);
