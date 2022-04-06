@@ -19,3 +19,6 @@
 <!-- jsPDF library -->
 <script src="js/jsPDF/dist/jspdf.min.js"></script>
 <script src="js/html_pdf.js"></script>
+
+<!-- jsBuscador -->
+<script type="text/javascript" src="js/validaBusqueda.js"></script>
