@@ -42,7 +42,7 @@
             <div class="row">
                 <div class="col-md-5"></div>
                 <div class="col-md-2">
-                    <a class="btn btn-warning" href="buscador.php" style="margin-left: 5px">Continuar</a>
+                    <a class="btn btn-warning" href="catalogo_tickets.php" style="margin-left: 5px">Continuar</a>
                 </div>
                 <div class="col-md-5"></div>
             </div>

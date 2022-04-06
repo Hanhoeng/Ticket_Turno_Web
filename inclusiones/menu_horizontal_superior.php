@@ -19,7 +19,7 @@ session_start();
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 <?php if(isset($_SESSION['usuario'])){?>
       <a class="btn btn-success" href="Ticket_Turno.php">Registro</a>
-      <a class="btn btn-warning" href="buscador.php" style="margin-left: 5px">Regresar</a>
+      <a class="btn btn-warning" href="catalogo_tickets.php" style="margin-left: 5px">Regresar</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -36,7 +36,7 @@ session_start();
             <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CRUD-Ticket</a>
             <div class="dropdown-menu drop-catalogo" aria-labelledby="dropdown04">
               <a class="dropdown-item" href="Ticket_Turno.php">GENERAR TURNO</a>
-              <a class="dropdown-item" href="buscador.php">BUSCAR TURNO</a>
+              <a class="dropdown-item" href="catalogo_tickets.php">BUSCAR TURNO</a>
             </div>
           </li>
 <?php }else{ ?>
