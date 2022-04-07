@@ -2,7 +2,7 @@
 if (!empty($_POST)){
 	require_once 'php/funciones_php.php';
 	include("class/class_dal.php");
-	$metodos_cursos=new ticket_turno_dal;
+	$metodos_ticket=new ticket_turno_dal;
 
 	if (isset($_POST['f_ticket_id']) and isset($_POST['f_curp'])){
 		$ticket_id=strtoupper($_POST['f_ticket_id']);
@@ -12,7 +12,7 @@ if (!empty($_POST)){
 		$curp=null;
 		echo "$ticket_id";
 		echo "$curp";
-		echo "no llego datos de curso Id y/o curp";
+		echo "no llego datos de ticket Id y/o curp";
 		exit;
 	}
 
@@ -92,7 +92,7 @@ if (!empty($_POST)){
 	if ($_SERVER['REQUEST_METHOD']=='POST'){
 
 		if (!validaRequerido($nombre_tramitante)){
-			$errores[]="El campo de nombre de curso esta vacio";
+			$errores[]="El campo de nombre de tramitante esta vacio";
 		}
 		if(!validaRequerido($curp)){
             $errores[]="El campo curp llegó vacío";
@@ -123,22 +123,22 @@ if (!empty($_POST)){
         }
 
 		if (!$errores){
-			$obj_curso=new ticket_turno($ticket_id,$nombre_tramitante);
+			$obj_ticket=new ticket_turno($ticket_id,$nombre_tramitante);
 			if ($ticket_id==''){
 
-				if($metodos_cursos->agregar($obj_curso)=="1"){
+				if($metodos_ticket->agregar($obj_ticket)=="1"){
 					echo 'ok';
 				}
 				else{
-					print "Ocurrio un error para ingresar el curso, intente nuevamente";
+					print "Ocurrio un error para ingresar el ticket, intente nuevamente";
 				}
 
 			}else{
-				if($metodos_cursos->actualizar_ticket($obj_curso)=="1"){
+				if($metodos_ticket->actualizar_ticket($obj_ticket)=="1"){
 					echo 'ok';
 				}
 				else{
-					print "Ocurrio un error para actualizar el curso, intente nuevamente";
+					print "Ocurrio un error para actualizar el ticket, intente nuevamente";
 				}
 			}
 
