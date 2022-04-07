@@ -47,24 +47,16 @@
         <?php
             include_once "inclusiones/css_y_favicon.php";
         ?>
+        <!-- El script de la librería-->
+        <script src="html2pdf.bundle.min.js"></script>
+        <!--Nuestro script, que se encarga de crear el PDF usando la librería-->
+        <script src="script.js"></script>
+        <!-- Algunos estilos -->
+        <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
-        <!--MENU PRINCIPAL-->
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="row">
-                        <?php
-                            include_once "inclusiones/menu_horizontal_superior.php";
-
-                        ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br><br><br>
-        <!--END MENU PRINCIPAL-->
+        
         <!--IMAGEN Y TITULO-->
         <div class="container-fluid">
             <div class="row">
@@ -274,6 +266,16 @@
             </form>
         </div>
         <!--END FORMULARIO-->
+
+        <br>
+        <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-2">
+                <a class="btn btn-warning" id="btnCrearPdf" style="margin-left: 5px">Imprimir pdf de usuario</a>
+                
+            </div>
+            <div class="col-md-5"></div>
+        </div>
         <?php 
             include_once "inclusiones/js_incluidos.php";
         ?>
@@ -288,16 +290,37 @@
                 <p>Se requiere generar comprobante pdf al usuario</p>
                 <p>Se contempla que la mayoría de usuarios usan movil</p>
             </div>
-            <div class="col-md-4">
-                <img src="./img/barras.png" alt="código de barras"  width="400" height="200">
-            </div>
-            <div class="col-md-4">
-                <img src="./img/codigoQR.png" alt="código de barras" width="400" height="400">
-            </div>
         </div>
     </footer>
 </html>
-        <?php
+<?php
+	//Agregamos la libreria para genera códigos QR
+	require "phpqrcode/qrlib.php";    
+	
+	//Declaramos una carpeta temporal para guardar la imagenes generadas
+	$dir = 'temp/';
+	
+	//Si no existe la carpeta la creamos
+	if (!file_exists($dir))
+        mkdir($dir);
+	
+        //Declaramos la ruta y nombre del archivo a generar
+	$filename = $dir.'test.png';
+
+        //Parametros de Condiguración
+	
+	$tamaño = 10; //Tamaño de Pixel
+	$level = 'L'; //Precisión Baja
+	$framSize = 3; //Tamaño en blanco
+	$contenido = "https://www.youtube.com/c/AnimePlay%E3%83%84"; //Texto
+	
+        //Enviamos los parametros a la Función para generar código QR 
+	QRcode::png($contenido, $filename, $level, $tamaño, $framSize); 
+	
+        //Mostramos la imagen generada
+	echo '<img src="'.$dir.basename($filename).'" /><hr/>';  
+?>
+<?php
             
         }
     }else{
@@ -309,3 +332,4 @@
     }
 }
 ?>
+
