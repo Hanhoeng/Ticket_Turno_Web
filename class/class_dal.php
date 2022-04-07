@@ -103,8 +103,18 @@
 
         function actualizar_ticket($obj){
             $sql="UPDATE ticket_turno SET ";
-            $sql.="TRAMITANTE='".$obj->getTramitante()."'";
+            $sql.="TRAMITANTE='".$obj->getTramitante()."',";
+            $sql.="NOMBRE='".$obj->getNombre()."',";
+            $sql.="PATERNO='".$obj->getPaterno()."',";
+            $sql.="MATERNO='".$obj->getMaterno()."',";
+            $sql.="TELEFONO=".$obj->getTelefono().",";
+            $sql.="CELULAR=".$obj->getCelular().",";
+            $sql.="CORREO='".$obj->getCorreo()."',";
+            $sql.="EDAD=".$obj->getEdad().",";
+            $sql.="ID_MUNICIPIO=".$obj->getMunicipio().",";
+            $sql.="ID_ASUNTO=".$obj->getAsunto();
             $sql.=" WHERE ID_TICKET=".$obj->getIdTicket();
+            $sql.=" AND CURP='".$obj->getCurp()."';";
             
             //echo $sql;exit;
             $this->set_sql($sql);

@@ -19,3 +19,12 @@
 <!-- jsPDF library -->
 <script src="js/jsPDF/dist/jspdf.min.js"></script>
 <script src="js/html_pdf.js"></script>
+
+<!-- jsBuscador -->
+<script type="text/javascript" src="js/validaBusqueda.js"></script>
+
+<!-- Librería de pdf -->
+<script type="text/javascript" src="js/html2pdf.bundle.min.js"></script>
+
+<!-- Convertidor de pdf -->
+<script type="text/javascript" src="js/script.js"></script>

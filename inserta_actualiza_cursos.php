@@ -4,11 +4,15 @@ if (!empty($_POST)){
 	include("class/class_dal.php");
 	$metodos_cursos=new ticket_turno_dal;
 
-	if (isset($_POST['ticket_id'])){
-		$ticket_id=strtoupper($_POST['ticket_id']);
+	if (isset($_POST['f_ticket_id']) and isset($_POST['f_curp'])){
+		$ticket_id=strtoupper($_POST['f_ticket_id']);
+		$curp=strtoupper($_POST['f_curp']);
 	}else{
 		$ticket_id=null;
-		echo "no llego dato de curso Id";
+		$curp=null;
+		echo "$ticket_id";
+		echo "$curp";
+		echo "no llego datos de curso Id y/o curp";
 		exit;
 	}
 
@@ -16,7 +20,71 @@ if (!empty($_POST)){
 		$nombre_tramitante=strtoupper($_POST['f_tramitante']);
 	}else{
 		$nombre_tramitante=null;
-		echo "no llego dato de nombre curso";
+		echo "no llego dato de nombre tramitante";
+		exit;
+	}
+
+	if (isset($_POST['f_nombre'])){
+		$nomb=strtoupper($_POST['f_nombre']);
+	}else{
+		$nomb=null;
+		echo "no llego dato de nombre";
+		exit;
+	}
+
+	if (isset($_POST['f_paterno'])){
+		$pate=strtoupper($_POST['f_paterno']);
+	}else{
+		$pate=null;
+		echo "no llego dato de apellido paterno";
+		exit;
+	}
+
+	if (isset($_POST['f_telefono'])){
+		$tele=strtoupper($_POST['f_telefono']);
+	}else{
+		$tele=null;
+		echo "no llego dato de telefono";
+		exit;
+	}
+
+	if (isset($_POST['f_celular'])){
+		$celu=strtoupper($_POST['f_celular']);
+	}else{
+		$celu=null;
+		echo "no llego dato de celular";
+		exit;
+	}
+
+	if (isset($_POST['f_correo'])){
+		$corr=strtoupper($_POST['f_correo']);
+	}else{
+		$corr=null;
+		echo "no llego dato de correo";
+		exit;
+	}
+
+	if (isset($_POST['f_edad'])){
+		$edad=strtoupper($_POST['f_edad']);
+	}else{
+		$edad=null;
+		echo "no llego dato de edad";
+		exit;
+	}
+
+	if (isset($_POST['f_municipio'])){
+		$muni=strtoupper($_POST['f_municipio']);
+	}else{
+		$muni=null;
+		echo "no llego dato de municipio";
+		exit;
+	}
+
+	if (isset($_POST['f_asunto'])){
+		$asun=strtoupper($_POST['f_asunto']);
+	}else{
+		$asun=null;
+		echo "no llego dato de asunto";
 		exit;
 	}
 
@@ -26,6 +94,33 @@ if (!empty($_POST)){
 		if (!validaRequerido($nombre_tramitante)){
 			$errores[]="El campo de nombre de curso esta vacio";
 		}
+		if(!validaRequerido($curp)){
+            $errores[]="El campo curp llegó vacío";
+        }
+        if(!validaRequerido($nomb)){
+            $errores[]="El campo Nombre llegó vacío";
+        }
+        if(!validaRequerido($pate)){
+            $errores[]="El campo paterno llegó vacío";
+        }
+        if(!validaRequerido($tele)){
+            $errores[]="El campo telefono llegó vacío";
+        }
+        if(!validaRequerido($celu)){
+            $errores[]="El campo celular llegó vacío";
+        }
+        if(!validaRequerido($corr)){
+            $errores[]="El campo correo llegó vacío";
+        }
+        if(!validaRequerido($edad)){
+            $errores[]="El campo edad llegó vacío";
+        }
+        if(!validarNumerico($muni)){
+            $errores[]="El campo municipio llegó vacío";
+        }
+        if(!validarNumerico($asun)){
+            $errores[]="El campo asunto llegó vacío";
+        }
 
 		if (!$errores){
 			$obj_curso=new ticket_turno($ticket_id,$nombre_tramitante);
