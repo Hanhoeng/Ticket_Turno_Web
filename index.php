@@ -54,7 +54,7 @@
         <div class="row">
             <div class="col-md-5"></div>
             <div class="col-md-2">
-                <a class="btn btn-warning" href="modificar_Ticket.php" style="margin-left: 5px">Modificar ticket</a>
+                <a class="btn btn-warning" href="buscar_Ticket.php" style="margin-left: 5px">Modificar ticket</a>
             </div>
             <div class="col-md-5"></div>
         </div>
