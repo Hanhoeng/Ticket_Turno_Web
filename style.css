@@ -24,6 +24,7 @@ excepto si este es un proyecto de un estudiante.
 /*
 Podemos agregar estilos
 */
+
 table {
     border-collapse: collapse;
 }
@@ -41,4 +42,94 @@ td {
 a{
     color: #ffaa00;
     font-size: 2rem;
+}
+label {
+    float: left;
+    padding: 12px 12px 12px 0;
+    /*padding-top, pa..right, pa..bottom,padding-left*/
+    display: inline-block;
+    font-weight: bold;
+}
+input[type=text],
+input[type=tel],
+input[type=email],
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+#contenedor {
+    border-radius: 5px;
+    background-color: rgba(57, 207, 102, .3);
+    padding: 10px;
+}
+
+.container {
+    border-radius: 5px;
+    /*border:1px solid red*/
+    background-color: rgba(57, 207, 102, .3);
+    padding-left: 100px;
+    padding-right: 100px;
+    position: relative;
+    top: 55px;
+}
+
+.col-10 {
+    float: left;
+    width: 0%;
+    margin-top: 6px;
+}
+
+.col-90 {
+    float: left;
+    width: 90%;
+    margin-top: 6px;
+}
+
+.col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;    
+}
+
+.col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+
+#row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+#row2 {
+    padding: 10px 10px 10px 10px;
+    display: flex;
+    justify-content: center;
+}
+/* MEDIA QUERY PARA HACER RESPONSIVO*/
+
+@media screen and (max-width:600px) {
+    .col-25,
+    .col-75,
+    input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+    label {
+        float: left;
+    }
+    .container {
+        padding: 10px;
+    }
+    p {
+        font-size: 120%;
+    }
+    h1 {
+        text-align: center;
+        font-size: 190%;
+    }
 }
