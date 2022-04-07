@@ -1,4 +1,5 @@
 <?php
+    $idti=isset($_POST["f_id_ticket"]) ? $idti=strtoupper($_POST["f_id_ticket"]) : $idti=null;
     $tram=isset($_POST["f_tramitante"]) ? $tram=strtoupper($_POST["f_tramitante"]) : $tram=null;
     $curp=isset($_POST["f_curp"]) ? $curp=strtoupper($_POST["f_curp"]) : $curp=null;
     $nomb=isset($_POST["f_nombre"]) ? $nomb=strtoupper($_POST["f_nombre"]) : $nomb=null;
@@ -55,7 +56,7 @@
     if(!$errores){
         include("class/class_ticket_turno.php");
         include("class/class_dal.php");
-        $obj_ticket = new ticket_turno(NULL,$tram,$curp,$nomb,$pate,$mate,$tele,$celu,$corr,$edad,$muni,$asun);
+        $obj_ticket = new ticket_turno($idti,$tram,$curp,$nomb,$pate,$mate,$tele,$celu,$corr,$edad,$muni,$asun);
         $metodos_ticket = new ticket_turno_dal;
 
         if($metodos_ticket->agregar($obj_ticket)==1){
