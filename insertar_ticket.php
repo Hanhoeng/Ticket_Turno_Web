@@ -55,7 +55,6 @@
     if(!$errores){
         include("class/class_ticket_turno.php");
         include("class/class_dal.php");
-        print $tram;
         $obj_ticket = new ticket_turno(NULL,$tram,$curp,$nomb,$pate,$mate,$tele,$celu,$corr,$edad,$muni,$asun);
         $metodos_ticket = new ticket_turno_dal;
 
