@@ -61,6 +61,19 @@
             }//end if
         }//end obtener_lista_TICKETS
 
+        function obtener_ultimo(){
+            $sql="SELECT MAX(ID_TICKET) AS ID_TICKET FROM ticket_turno";
+            $this->set_sql($sql);
+            $result=mysqli_query($this->db_conn,$this->db_query) or die(mysqli_error($this->db_conn));
+            $total_TICKETS=mysqli_num_rows($result);
+            $obj_det=null;
+            if($total_TICKETS==1){
+                $renglon=mysqli_fetch_assoc($result);
+                $id_ticket=$renglon['ID_TICKET'];
+            }//end if
+            return $id_ticket;
+        }//end obtener_lista_TICKETS
+
         function agregar($obj){
             $sql = "insert into ticket_turno (";
             $sql .= "TRAMITANTE,";

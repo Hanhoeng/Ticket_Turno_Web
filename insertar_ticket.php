@@ -13,7 +13,7 @@
     $asun=isset($_POST["f_asunto"]) ? $asun=strtoupper($_POST["f_asunto"]) : $asun=null;
 
     /*
-    print $tram;
+    print $idti;
     exit;
     */
     
@@ -107,53 +107,189 @@
             <div class="col-md-1"></div>
         </div>
     </div>
-    
+
+<?php
+    $id_ticket = $metodos_ticket->obtener_ultimo();
+?>
+<!--Numero ticket-->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-1">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <label for="Id ticket">Número de ticket:</label>
             </div>
-            <div class="col-md-10">
-                <?php
-                echo "<label>HOLA</label>";
-                echo "<p>";
-                echo $idti;
-                echo "</p>";
-                echo "<p>";
-                echo $tram;
-                echo "</p>";
-                echo "<p>";
-                echo $curp;
-                echo "</p>";
-                echo "<p>";
-                echo $nomb;
-                echo "</p>";
-                echo "<p>";
-                echo $pate;
-                echo "</p>";
-                echo "<p>";
-                echo $mate;
-                echo "</p>";
-                echo "<p>";
-                echo $tele;
-                echo "</p>";
-                echo "<p>";
-                echo $celu;
-                echo "</p>";
-                echo "<p>";
-                echo $corr;
-                echo "</p>";
-                echo "<p>";
-                echo $edad;
-                echo "</p>";
-                echo "<p>";
-                echo $muni;
-                echo "</p>";
-                echo "<p>";
-                echo $asun;
-                echo "</p>";
-                ?>
+            <div class="col-md-3">
+<?php
+echo "<p>";
+echo $id_ticket;
+echo "</p>";
+?>          </div>
+            <div class="col-md-3"></div>
+        </div>
+<!--Tramitante-->
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <label for="Id ticket">Tramitante:</label>
             </div>
-            <div class="col-md-1"></div>
+            <div class="col-md-3">
+<?php
+echo "<p>";
+echo $tram;
+echo "</p>";
+?>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+<!--curp-->
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <label for="Id ticket">CURP:</label>
+            </div>
+            <div class="col-md-3">
+<?php
+echo "<p>";
+echo $curp;
+echo "</p>";
+?>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+<!--nombre-->
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <label for="Id ticket">Nombre:</label>
+            </div>
+            <div class="col-md-3">
+<?php
+echo "<p>";
+echo $nomb;
+echo "</p>";
+?>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+<!--paterno-->
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <label for="Id ticket">Paterno:</label>
+            </div>
+            <div class="col-md-3">
+<?php
+echo "<p>";
+echo $pate;
+echo "</p>";
+?>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+<!--materno-->
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <label for="Id ticket">Materno:</label>
+            </div>
+            <div class="col-md-3">
+<?php
+echo "<p>";
+echo $mate;
+echo "</p>";
+?>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+<!--telefono-->
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <label for="Id ticket">Telefono:</label>
+            </div>
+            <div class="col-md-3">
+<?php
+echo "<p>";
+echo $tele;
+echo "</p>";
+?>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+<!--celular-->
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <label for="Id ticket">Celular:</label>
+            </div>
+            <div class="col-md-3">
+<?php
+echo "<p>";
+echo $celu;
+echo "</p>";
+?>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+<!--correo-->
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <label for="Id ticket">Correo:</label>
+            </div>
+            <div class="col-md-3">
+<?php
+echo "<p>";
+echo $corr;
+echo "</p>";
+?>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+<!--edad-->
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <label for="Id ticket">Edad:</label>
+            </div>
+            <div class="col-md-3">
+<?php
+echo "<p>";
+echo $edad;
+echo "</p>";
+?>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+<!--municipio-->
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <label for="Id ticket">Municipio:</label>
+            </div>
+            <div class="col-md-3">
+<?php
+echo "<p>";
+echo $muni;
+echo "</p>";
+?>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+<!--asunto-->
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <label for="Id ticket">Asunto:</label>
+            </div>
+            <div class="col-md-3">
+<?php
+echo "<p>";
+echo $asun;
+echo "</p>";
+?>
+            </div>
+            <div class="col-md-3"></div>
         </div>
     </div>
 

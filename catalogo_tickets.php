@@ -2,7 +2,7 @@
 <html>
 <head>
     <?php include_once "inclusiones/meta_tags.php"; ?>
-    <title>Catálogo de Cursos</title>
+    <title>Catálogo de Tickets</title>
     <?php include_once "inclusiones/css_y_favicon.php"; ?>
 </head>
 <body>
@@ -18,23 +18,23 @@
 <!--<div class="container-fluid">  -->
 <div class="container" style="margin-top: 65px !important;">  
 <div class="form-group">
-<legend class="text-center header"><h2>Lista de cursos para capacitación</h2></legend>
+<legend class="text-center header"><h2>Lista de tickets generados</h2></legend>
 </div>
 
 <?php  
 include("class/class_dal.php");
-$obj_dato_catalogo_cursos=new ticket_turno_dal;
+$obj_dato_catalogo_tickets=new ticket_turno_dal;
 
-$result_dato_catalogo_cursos=$obj_dato_catalogo_cursos->obtener_lista_ticket();
+$result_dato_catalogo_tickets=$obj_dato_catalogo_tickets->obtener_lista_ticket();
 
-    if ($result_dato_catalogo_cursos==NULL){
+    if ($result_dato_catalogo_tickets==NULL){
 
             print "<p>No se encontraron resultados de tickets</p>";
         }
         else{
 /*
             print '<pre>';
-            print_r($result_dato_catalogo_cursos);
+            print_r($result_dato_catalogo_tickets);
             print '</pre>';
             return;
             */
@@ -71,7 +71,7 @@ $result_dato_catalogo_cursos=$obj_dato_catalogo_cursos->obtener_lista_ticket();
                              </thead>
                             <tbody>
 		<?php
-    						foreach ($result_dato_catalogo_cursos as $key => $value) {
+    						foreach ($result_dato_catalogo_tickets as $key => $value) {
 		?>
     						<tr>
 								<td><?=$value->getIdTicket();?></td>
@@ -87,14 +87,14 @@ $result_dato_catalogo_cursos=$obj_dato_catalogo_cursos->obtener_lista_ticket();
                                 <td><?=$value->getMunicipio();?></td>
                                 <td><?=$value->getAsunto();?></td>
 <td>
-<button class='update btn btn-success btn-sm' id='update_<?= $value->getIdTicket() ?>' data-id='<?= $value->getIdTicket() ?>' >Actualizar</button>
+<button class='update btn btn-success btn-sm' id='update_<?= $value->getIdTicket(); ?>' data-id='<?= $value->getIdTicket(); ?>' >Actualizar</button>
 </td>
 
 <td>
-<button class='ver btn btn-warning btn-sm' id='ver_<?= $value->getIdTicket() ?>' data-id='<?= $value->getIdTicket() ?>' >Ver</button></td>
+<button class='ver btn btn-warning btn-sm' id='ver_<?= $value->getIdTicket(); ?>' data-id='<?= $value->getIdTicket(); ?>' >Ver</button></td>
 
 <td>
-<button class='delete btn btn-danger btn-sm' id='del_<?= $value->getIdTicket() ?>' data-id='<?= $value->getIdTicket() ?>' >Eliminar</button>
+<button class='delete btn btn-danger btn-sm' id='del_<?= $value->getIdTicket(); ?>' data-id='<?= $value->getIdTicket(); ?>' >Eliminar</button>
 </td>
 
     						</tr>
@@ -107,11 +107,6 @@ $result_dato_catalogo_cursos=$obj_dato_catalogo_cursos->obtener_lista_ticket();
 </div>
 
 
-<?php
-
-        }
-
-?>
 
 <?php include_once "inclusiones/js_incluidos.php"; ?>
 
@@ -129,7 +124,7 @@ $('#lista_tickets').DataTable( {
 dom: 'Blfrtip',
         buttons: [{
             extend: 'excelHtml5',
-                messageTop: 'Direccion De Ecología',
+                messageTop: 'Tickets',
                 text:"Exporta Excel",
                 title:"Listado de tickets",
         },
@@ -138,7 +133,7 @@ dom: 'Blfrtip',
                 extend: 'csvHtml5',
                 text:"Exporta csv",
                 title:"Listado de tickets",
-                messageTop: 'Direccion De Ecología',
+                messageTop: 'Tickets',
               },
                           {
                 extend: 'pdfHtml5',
@@ -163,7 +158,7 @@ dom: 'Blfrtip',
 
 
 $('#add').click(function(){  
-            $("h4.modal-title").text("Agregado de Curso");
+            $("h4.modal-title").text("Agregado de Ticket");
             $('#insert').val("Insert");  
             $('#insert_form')[0].reset();  
       });
@@ -174,16 +169,16 @@ $('#add').click(function(){
            event.preventDefault();  
            if($('#f_tramitante').val() == '')  
            {  
-                //bootbox.alert('Error:Nombre curso es requerido');
+                //bootbox.alert('Error:Nombre tramitante es requerido');
                 Swal.fire({
            type: 'warning',
            title: 'Error',
-           text: 'Error: Nombre curso es requerido'});  
+           text: 'Error: Nombre tramitante es requerido'});  
            }  
            else  
            {  
                 $.ajax({  
-                     url:"inserta_actualiza_cursos.php",  
+                     url:"inserta_actualiza_tickets.php",  
                      method:"POST",  
                      data:$('#insert_form').serialize(),  
                      beforeSend:function(){ 
@@ -202,8 +197,8 @@ $('#add').click(function(){
                           
                           //bootbox.alert('correcto!');
                           Swal.fire({
-                          title: "Registro de Cursos",
-                          text: "¡Curso Ingresado Correctamente!",
+                          title: "Registro de Tickets",
+                          text: "¡Ticket Ingresado Correctamente!",
                           type: "success"
                           }).then(function() {
                             window.location = "catalogo_tickets.php";
@@ -235,7 +230,7 @@ $('#add').click(function(){
        if(result){
          // AJAX Request
          $.ajax({
-           url: 'delete_cursos.php',
+           url: 'delete_ticket.php',
            type: 'POST',
            data: { id:deleteid },
            success: function(response){
@@ -258,7 +253,7 @@ $('#add').click(function(){
 
 
 $('#lista_tickets tbody').on('click', '.ver', function() {
-         $("h4.modal-title").text("Detalle de Curso");
+         $("h4.modal-title").text("Detalle de Ticket");
     // ver id
     var ticket_id = $(this).data('id');
     //alert(ticket_id);
@@ -266,7 +261,7 @@ $('#lista_tickets tbody').on('click', '.ver', function() {
           if(ticket_id != '')  
            {  
                 $.ajax({  
-                     url:'select_cursos.php',  
+                     url:'select_ticket.php',  
                      method:'POST',  
                      data:{id:ticket_id},  
                      success:function(response){
@@ -285,12 +280,12 @@ $('#lista_tickets tbody').on('click', '.ver', function() {
 });
 
 
-/*updTAE*/
+/*update*/
 $('#lista_tickets tbody').on('click', '.update', function() {
-    $("h4.modal-title").text("Modificación de Curso");
+    $("h4.modal-title").text("Modificación de Ticket");
     var ticket_id = $(this).data('id');
                $.ajax({  
-                url:"fetch_curso.php",  
+                url:"fetch_ticket.php",  
                 method:"POST",  
                 data:{ticket_id:ticket_id},  
                 dataType:"json",  
@@ -298,8 +293,18 @@ $('#lista_tickets tbody').on('click', '.update', function() {
                 //alert(JSON.stringify(data));
 
                      
-                     $('#f_tramitante').val(data.nombre_curso);  
-                     $('#ticket_id').val(data.IDCurso);  
+                     $('#f_tramitante').val(data.tramitante);  
+                     $('#ticket_id').val(data.id_ticket);
+                     $('#f_curp').val(data.curp);  
+                     $('#f_nombre').val(data.nombre);  
+                     $('#f_paterno').val(data.paterno);  
+                     $('#f_materno').val(data.materno);
+                     $('#f_telefono').val(data.telefono);  
+                     $('#f_celular').val(data.celular);   
+                     $('#f_correo').val(data.correo);  
+                     $('#f_edad').val(data.edad);
+                     $('#f_municipio').val(data.municipio);  
+                     $('#f_asunto').val(data.asunto);      
                      $('#insert').val("Actualizar");  
                      $('#add_data_Modal').modal('show'); 
                       
@@ -322,7 +327,7 @@ $('#lista_tickets tbody').on('click', '.update', function() {
            <div class="modal-content">  
                 <div class="modal-header">  
                      <legend class="text-center header">
-                     <h4 class="modal-title">Detalles de Curso</h4>
+                     <h4 class="modal-title">Detalles de Ticket</h4>
                      <button type="button" class="close" data-dismiss="modal">&times;</button>
                      </legend>  
                        
@@ -350,8 +355,32 @@ $('#lista_tickets tbody').on('click', '.update', function() {
                 </div>  
                 <div class="modal-body">  
                      <form method="post" id="insert_form">  
-                          <label>Nombre de Curso:</label>
-                          <input type="text" name="f_tramitante" id="f_tramitante" class="form-control" />  
+                          <label>Nombre de Tramitante:</label>
+                          <input type="text" value="<?= $value->getTramitante(); ?>" name="f_tramitante" id="f_tramitante" class="form-control" />  
+                          <br /> 
+                          <label>Curp:</label>
+                          <input type="text" name="f_curp" id="f_curp" class="form-control" />  
+                          <br />  
+                          <label>Nombre:</label>
+                          <input type="text" name="f_nombre" id="f_nombre" class="form-control" />  
+                          <br /> 
+                          <label>Paterno:</label>
+                          <input type="text" name="f_paterno" id="f_paterno" class="form-control" />  
+                          <br />  
+                          <label>Materno:</label>
+                          <input type="text" name="f_materno" id="f_materno" class="form-control" /> 
+                          <br />
+                          <label>Teléfono:</label>
+                          <input type="text" name="f_telefono" id="f_telefono" class="form-control" />  
+                          <br /> 
+                          <label>Celular:</label>
+                          <input type="text" name="f_celular" id="f_celular" class="form-control" />  
+                          <br />  
+                          <label>Correo:</label>
+                          <input type="text" name="f_correo" id="f_correo" class="form-control" />  
+                          <br /> 
+                          <label>Edad:</label>
+                          <input type="text" name="f_edad" id="f_edad" class="form-control" />  
                           <br />  
                           <input type="hidden" name="ticket_id" id="ticket_id" readonly="true" />  
                           <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />  
@@ -363,3 +392,9 @@ $('#lista_tickets tbody').on('click', '.update', function() {
            </div>  
       </div>  
  </div>
+ 
+<?php
+
+}
+
+?>
