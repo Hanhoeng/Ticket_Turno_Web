@@ -46,12 +46,6 @@
         <?php
             include_once "inclusiones/css_y_favicon.php";
         ?>
-        <!-- El script de la librería-->
-        <script src="html2pdf.bundle.min.js"></script>
-        <!--Nuestro script, que se encarga de crear el PDF usando la librería-->
-        <script src="script.js"></script>
-        <!-- Algunos estilos -->
-        <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
@@ -198,7 +192,7 @@
                             </div>
                             <div class="col-md-9">
                                 <select name="f_municipio" id="f_municipio">
-                                    <option value="0"><?=utf8_encode($obj_ticket->getMunicipio()); ?></option>
+                                    <option value="0"><?=$obj_ticket->getMunicipio(); ?></option>
                                     <?php
                                         foreach ($lista_municipios as $key => $values){
                                     ?>
@@ -278,7 +272,7 @@
             include_once "inclusiones/js_incluidos.php";
         ?>
     </body>
-    <footer>
+    <footer >
         <div class="row">
             <div class="col-md-4">
                 <p>Se requiere un mecanismo de autenticación del documento</p>
@@ -310,7 +304,7 @@
 	$tamaño = 10; //Tamaño de Pixel
 	$level = 'L'; //Precisión Baja
 	$framSize = 3; //Tamaño en blanco
-	$contenido = "https://www.youtube.com/c/AnimePlay%E3%83%84"; //Texto
+	$contenido = "$curp"; //Texto
 	
         //Enviamos los parametros a la Función para generar código QR 
 	QRcode::png($contenido, $filename, $level, $tamaño, $framSize); 
