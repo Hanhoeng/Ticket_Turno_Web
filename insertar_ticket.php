@@ -60,9 +60,9 @@
         $metodos_ticket = new ticket_turno_dal;
 
         if($metodos_ticket->agregar($obj_ticket)==1){
-            print "<h1>Ticket agregado Correctamente</h1>";
+            
         }else{
-            print "<h1>Error, vuelve a intentar</h1>";
+           
         }
     }else{
         echo "<ul style='color_red',font-size=25px;>";
@@ -71,4 +71,143 @@
         endforeach;
         echo "</ul>";
     }
+?>
+<?php
+    include("class/class_dal_asunto.php");
+    include("class/class_dal_municipio.php");
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <?php include_once "inclusiones/meta_tags.php";?>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tickets de turno</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    
+    <?php
+            include_once "inclusiones/css_y_favicon.php";
+        ?>
+</head>
+
+<body>
+    <br>
+    <!--IMAGEN Y TITULO-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1">
+                <img src="img/Logo-sep2007.jpg" alt="Logo SEP 2007" width="50" height="50">
+            </div>
+            <div class="col-md-10">
+                <h1>Verifica correctamente tus datos!</h1>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-10">
+                <?php
+                echo "<label>HOLA</label>";
+                echo "<p>";
+                echo $idti;
+                echo "</p>";
+                echo "<p>";
+                echo $tram;
+                echo "</p>";
+                echo "<p>";
+                echo $curp;
+                echo "</p>";
+                echo "<p>";
+                echo $nomb;
+                echo "</p>";
+                echo "<p>";
+                echo $pate;
+                echo "</p>";
+                echo "<p>";
+                echo $mate;
+                echo "</p>";
+                echo "<p>";
+                echo $tele;
+                echo "</p>";
+                echo "<p>";
+                echo $celu;
+                echo "</p>";
+                echo "<p>";
+                echo $corr;
+                echo "</p>";
+                echo "<p>";
+                echo $edad;
+                echo "</p>";
+                echo "<p>";
+                echo $muni;
+                echo "</p>";
+                echo "<p>";
+                echo $asun;
+                echo "</p>";
+                ?>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+
+    <!--END IMAGEN Y TITULO-->
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!--CUERPO MENÚ-->
+    <div class="container-fluid">
+    <div class="row">
+            <div class="col-sm-6"></div>
+            <div class="col-sm-2">
+                <p style="text-align: center"><a class="btn btn-warning" id="btnCrearPdf" style="margin-left: 5px">Imprimir pdf de usuario</a></p>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+    <!--FIN CUERPO MENÚ-->
+
+    <?php 
+            include_once "inclusiones/js_incluidos.php";
+        ?>
+</body>
+
+</html>
+
+<?php
+	//Agregamos la libreria para genera códigos QR
+	require "phpqrcode/qrlib.php";    
+	
+	//Declaramos una carpeta temporal para guardar la imagenes generadas
+	$dir = 'temp/';
+	
+	//Si no existe la carpeta la creamos
+	if (!file_exists($dir))
+        mkdir($dir);
+	
+        //Declaramos la ruta y nombre del archivo a generar
+	$filename = $dir.'test.png';
+
+        //Parametros de Condiguración
+	
+	$tamaño = 10; //Tamaño de Pixel
+	$level = 'L'; //Precisión Baja
+	$framSize = 3; //Tamaño en blanco
+	$contenido = "$curp"; //Texto
+	
+        //Enviamos los parametros a la Función para generar código QR 
+	QRcode::png($contenido, $filename, $level, $tamaño, $framSize); 
+	
+        //Mostramos la imagen generada
+	echo '<img src="'.$dir.basename($filename).'" /><hr/>';  
 ?>
