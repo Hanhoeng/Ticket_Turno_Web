@@ -1,6 +1,7 @@
 <?php
     $curp=isset($_POST["f_curp"]) ? $curp=strtoupper($_POST["f_curp"]) : $curp=null;
     $ticketId=isset($_POST["f_ticket_id"]) ? $pass=strtoupper($_POST["f_ticket_id"]) : $ticketId=null;
+    print $ticketId;
     if($_POST){
         require_once 'php/funciones_php.php';
         $errores=array();
@@ -79,7 +80,7 @@
         <!--END IMAGEN Y TITULO-->
  <!--FORMULARIO-->
  <div class="container-fluid">
-            <form name="forma" class="form" id="forma" action="inserta_actualiza_cursos.php" method="POST" onsubmit="return valida_ticket();" accept-charset="utf-8">
+            <form name="forma" class="form" id="forma" action="actualiza_ticket.php" method="POST" onsubmit="return valida_ticket();" accept-charset="utf-8">
                 <!--TRAMITANTE Y CURP-->
                 <div class="form-row">
                     <div class="form-group col-md-8">
@@ -89,6 +90,7 @@
                             </div>
                             <div class="col-md-7">
                                 <input type="input" class="form-control" name="f_tramitante" id="f_tramitante" value="<?=$obj_ticket->getTramitante(); ?>">
+                                <input type="hidden" class="form-control" name="f_id_ticket" id="f_id_ticket" value="<?=$obj_ticket->getIdTicket(); ?>">
                             </div>
                         </div>
                     </div>

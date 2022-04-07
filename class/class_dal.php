@@ -111,10 +111,10 @@
             $sql.="CELULAR=".$obj->getCelular().",";
             $sql.="CORREO='".$obj->getCorreo()."',";
             $sql.="EDAD=".$obj->getEdad().",";
-            $sql.="MUNICIPIO=".$obj->getMunicipio().",";
-            $sql.="ASUNTO=".$obj->getAsunto();
+            $sql.="ID_MUNICIPIO=".$obj->getMunicipio().",";
+            $sql.="ID_ASUNTO=".$obj->getAsunto();
             $sql.=" WHERE ID_TICKET=".$obj->getIdTicket();
-            $sql.=" AND CURP='$obj->getCurp()'";
+            $sql.=" AND CURP='".$obj->getCurp()."';";
             
             //echo $sql;exit;
             $this->set_sql($sql);

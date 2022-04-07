@@ -73,12 +73,14 @@ function valida_ticket() {
             'Municipio no puede ser 0',
             'question'
         );
+        return false;
     }else if (js_asunto == 0){
         Swal.fire(
             'Asunto',
             'Asunto no puede ser 0',
             'question'
         );
+        return false;
 
     } else if (!patron_curp.test(js_curp)) {
         Swal.fire({
