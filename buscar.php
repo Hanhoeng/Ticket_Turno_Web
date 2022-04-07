@@ -79,7 +79,7 @@
         <!--END IMAGEN Y TITULO-->
  <!--FORMULARIO-->
  <div class="container-fluid">
-            <form name="forma" class="form" id="forma" action="insertar_ticket.php" method="POST" onsubmit="return valida_ticket();" accept-charset="utf-8">
+            <form name="forma" class="form" id="forma" action="inserta_actualiza_cursos.php" method="POST" onsubmit="return valida_ticket();" accept-charset="utf-8">
                 <!--TRAMITANTE Y CURP-->
                 <div class="form-row">
                     <div class="form-group col-md-8">
