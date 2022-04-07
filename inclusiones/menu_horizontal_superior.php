@@ -41,7 +41,7 @@ session_start();
           </li>
 <?php }else{ ?>
       <a class="btn btn-success" href="Ticket_Turno.php">Registro</a>
-      <a class="btn btn-warning" href="modificar_Ticket.php" style="margin-left: 5px">Modificar ticket</a>
+      <a class="btn btn-warning" href="buscar_ticket.php" style="margin-left: 5px">Modificar ticket</a>
       <a class="btn btn-warning" href="index.php" style="margin-left: 5px">Regresar</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
