@@ -1,6 +1,7 @@
 <?php
     $curp=isset($_POST["f_curp"]) ? $curp=strtoupper($_POST["f_curp"]) : $curp=null;
     $ticketId=isset($_POST["f_ticket_id"]) ? $pass=strtoupper($_POST["f_ticket_id"]) : $ticketId=null;
+    print $ticketId;
     if($_POST){
         require_once 'php/funciones_php.php';
         $errores=array();
@@ -49,21 +50,7 @@
     </head>
 
     <body>
-        <!--MENU PRINCIPAL-->
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="row">
-                        <?php
-                            include_once "inclusiones/menu_horizontal_superior.php";
-
-                        ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br><br><br>
-        <!--END MENU PRINCIPAL-->
+        
         <!--IMAGEN Y TITULO-->
         <div class="container-fluid">
             <div class="row">
@@ -79,7 +66,7 @@
         <!--END IMAGEN Y TITULO-->
  <!--FORMULARIO-->
  <div class="container-fluid">
-            <form name="forma" class="form" id="forma" action="inserta_actualiza_cursos.php" method="POST" onsubmit="return valida_ticket();" accept-charset="utf-8">
+            <form name="forma" class="form" id="forma" action="actualiza_ticket.php" method="POST" onsubmit="return valida_ticket();" accept-charset="utf-8">
                 <!--TRAMITANTE Y CURP-->
                 <div class="form-row">
                     <div class="form-group col-md-8">
@@ -89,6 +76,7 @@
                             </div>
                             <div class="col-md-7">
                                 <input type="input" class="form-control" name="f_tramitante" id="f_tramitante" value="<?=$obj_ticket->getTramitante(); ?>">
+                                <input type="hidden" class="form-control" name="f_id_ticket" id="f_id_ticket" value="<?=$obj_ticket->getIdTicket(); ?>">
                             </div>
                         </div>
                     </div>
@@ -206,7 +194,7 @@
                             </div>
                             <div class="col-md-9">
                                 <select name="f_municipio" id="f_municipio">
-                                    <option value="0"><?=utf8_encode($obj_ticket->getMunicipio()); ?></option>
+                                    <option value="0"><?=$obj_ticket->getMunicipio(); ?></option>
                                     <?php
                                         foreach ($lista_municipios as $key => $values){
                                     ?>
@@ -272,11 +260,21 @@
             </form>
         </div>
         <!--END FORMULARIO-->
+
+        <br>
+        <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-2">
+                <a class="btn btn-warning" id="btnCrearPdf" style="margin-left: 5px">Imprimir pdf de usuario</a>
+                
+            </div>
+            <div class="col-md-5"></div>
+        </div>
         <?php 
             include_once "inclusiones/js_incluidos.php";
         ?>
     </body>
-    <footer>
+    <footer >
         <div class="row">
             <div class="col-md-4">
                 <p>Se requiere un mecanismo de autenticación del documento</p>
@@ -286,16 +284,37 @@
                 <p>Se requiere generar comprobante pdf al usuario</p>
                 <p>Se contempla que la mayoría de usuarios usan movil</p>
             </div>
-            <div class="col-md-4">
-                <img src="./img/barras.png" alt="código de barras"  width="400" height="200">
-            </div>
-            <div class="col-md-4">
-                <img src="./img/codigoQR.png" alt="código de barras" width="400" height="400">
-            </div>
         </div>
     </footer>
 </html>
-        <?php
+<?php
+	//Agregamos la libreria para genera códigos QR
+	require "phpqrcode/qrlib.php";    
+	
+	//Declaramos una carpeta temporal para guardar la imagenes generadas
+	$dir = 'temp/';
+	
+	//Si no existe la carpeta la creamos
+	if (!file_exists($dir))
+        mkdir($dir);
+	
+        //Declaramos la ruta y nombre del archivo a generar
+	$filename = $dir.'test.png';
+
+        //Parametros de Condiguración
+	
+	$tamaño = 10; //Tamaño de Pixel
+	$level = 'L'; //Precisión Baja
+	$framSize = 3; //Tamaño en blanco
+	$contenido = "$curp"; //Texto
+	
+        //Enviamos los parametros a la Función para generar código QR 
+	QRcode::png($contenido, $filename, $level, $tamaño, $framSize); 
+	
+        //Mostramos la imagen generada
+	echo '<img src="'.$dir.basename($filename).'" /><hr/>';  
+?>
+<?php
             
         }
     }else{
@@ -307,3 +326,4 @@
     }
 }
 ?>
+
