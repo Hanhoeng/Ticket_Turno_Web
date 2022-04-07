@@ -6,6 +6,8 @@
     <title>Registro de aspirantes</title>
     <?php include_once "inclusiones/css_y_favicon.php"; ?>
     <link rel="stylesheet" href="css/index_estilos.css">
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le4clIfAAAAALoaLLxUF0k4ojWWNGwViCxBq4oX"></script>
+
 </head>
 
 <body id="LoginForm">
@@ -27,6 +29,8 @@
                     <div class="form-group">
                         <input type="password" class="form-control" id="f_pwd" name="f_pwd" placeholder="Password">
                     </div>
+                    <!-- Captcha -->
+
                     <button type="submit" class="btn btn-primary">Login</button>
                 </form>
             </div>
@@ -35,6 +39,15 @@
     <?php
     include_once "inclusiones/js_incluidos.php";
     ?>
+    <script>
+        grecaptcha.ready(function() {
+            grecaptcha.execute('put your site key here', {
+                action: 'homepage'
+            }).then(function(token) {
+                // pass the token to the backend script for verification
+            });
+        });
+    </script>
 
 </body>
 
