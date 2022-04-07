@@ -58,16 +58,6 @@
             </div>
             <div class="col-md-5"></div>
         </div>
-        <br>
-        <div class="row">
-            <div class="col-md-5"></div>
-            <div class="col-md-2">
-                <a class="btn btn-warning" href="pdf_usuario.php" style="margin-left: 5px">Imprimir pdf de usuario</a>
-            </div>
-            <div class="col-md-5"></div>
-        </div>
-
-
     </div>
     <!--FIN CUERPO MENÚ-->
 
