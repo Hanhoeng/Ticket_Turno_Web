@@ -65,7 +65,7 @@
         <!--END IMAGEN Y TITULO-->
  <!--FORMULARIO-->
  <div class="container-fluid">
-            <form name="forma" class="form" id="forma" action="inserta_actualiza_cursos.php" method="POST" onsubmit="return valida_ticket();" accept-charset="utf-8">
+            <form name="forma" class="form" id="forma" action="actualiza_ticket.php" method="POST" onsubmit="return valida_ticket();" accept-charset="utf-8">
                 <!--TRAMITANTE Y CURP-->
                 <div class="form-row">
                     <div class="form-group col-md-8">
@@ -75,6 +75,7 @@
                             </div>
                             <div class="col-md-7">
                                 <input type="input" class="form-control" name="f_tramitante" id="f_tramitante" value="<?=$obj_ticket->getTramitante(); ?>">
+                                <input type="hidden" style="display:hidden;" class="form-control" name="f_id_ticket" id="f_id_ticket" value="<?=$obj_ticket->getIdTicket(); ?>">
                             </div>
                         </div>
                     </div>
@@ -261,29 +262,16 @@
 
         <br>
         <div class="row">
-            <div class="col-md-5"></div>
-            <div class="col-md-2">
-                <a class="btn btn-warning" id="btnCrearPdf" style="margin-left: 5px">Imprimir pdf de usuario</a>
-                
+            <div class="col-sm-6"></div>
+            <div class="col-sm-2">
+                <p style="text-align: center"><a class="btn btn-warning" id="btnCrearPdf" style="margin-left: 5px">Imprimir pdf de usuario</a></p>
             </div>
-            <div class="col-md-5"></div>
+            <div class="col-sm-4"></div>
         </div>
         <?php 
             include_once "inclusiones/js_incluidos.php";
         ?>
     </body>
-    <footer >
-        <div class="row">
-            <div class="col-md-4">
-                <p>Se requiere un mecanismo de autenticación del documento</p>
-                <p>Se requiere indicar el número de turno</p>
-                <p>Se requiere control por oficina regional</p>
-                <p>Se requiere parametrizar la antención por dias</p>
-                <p>Se requiere generar comprobante pdf al usuario</p>
-                <p>Se contempla que la mayoría de usuarios usan movil</p>
-            </div>
-        </div>
-    </footer>
 </html>
 <?php
 	//Agregamos la libreria para genera códigos QR

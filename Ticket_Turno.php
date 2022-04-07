@@ -245,22 +245,4 @@
             include_once "inclusiones/js_incluidos.php";
         ?>
     </body>
-    <footer>
-        <div class="row">
-            <div class="col-md-4">
-                <p>Se requiere un mecanismo de autenticación del documento</p>
-                <p>Se requiere indicar el número de turno</p>
-                <p>Se requiere control por oficina regional</p>
-                <p>Se requiere parametrizar la antención por dias</p>
-                <p>Se requiere generar comprobante pdf al usuario</p>
-                <p>Se contempla que la mayoría de usuarios usan movil</p>
-            </div>
-            <div class="col-md-4">
-                <img src="./img/barras.png" alt="código de barras"  width="400" height="200">
-            </div>
-            <div class="col-md-4">
-                <img src="./img/codigoQR.png" alt="código de barras" width="400" height="400">
-            </div>
-        </div>
-    </footer>
 </html>
