@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     quality: 0.98
                 },
                 html2canvas: {
-                    scale: 2, // A mayor escala, mejores gráficos, pero más peso
+                    scale: 1, // A mayor escala, mejores gráficos, pero más peso
                     letterRendering: true,
                 },
                 jsPDF: {

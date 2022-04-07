@@ -22,3 +22,9 @@
 
 <!-- jsBuscador -->
 <script type="text/javascript" src="js/validaBusqueda.js"></script>
+
+<!-- Librería de pdf -->
+<script type="text/javascript" src="js/html2pdf.bundle.min.js"></script>
+
+<!-- Convertidor de pdf -->
+<script type="text/javascript" src="js/script.js"></script>
